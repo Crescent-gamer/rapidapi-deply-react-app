@@ -1,0 +1,25 @@
+language: node_js
+node_js:
+  - 12.16.1
+  - node
+cache: npm
+
+install:
+  - npm install
+  - npm init -y
+  - npm install express axios dotenv --save
+
+
+script:
+  - heroku create
+
+notifications:
+ email: false
+
+deploy:
+  provider: pages
+  cleanup: false
+  github-token: $GITHUB_TOKEN
+  local_dir: build
+  on:
+    branch: main
